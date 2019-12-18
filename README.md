@@ -11,4 +11,4 @@ python library to read dial guage from images
 
 ![Alt Text](http://www.geotechegypt.com)
 
-![Geotechnics](http://www.geotechegypt.com)
+[Geotechnics](http://www.geotechegypt.com)
