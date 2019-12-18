@@ -3,7 +3,7 @@ import hdial_lib as h  # including jit
 import hdial_libc as hc  # cython
 import cv2
 
-CFLAG = 1  # % 1 jit 2 cython
+CFLAG = 2  # % 1 jit 2 cython
 if CFLAG == 1:
     print("--- using @jit")
 elif CFLAG == 2:
@@ -46,11 +46,8 @@ if __name__ == "__main__":
     # DEBUG = True
     w_img = 400
     dial_scale = 100
-    # for i in range(11, 35):
     for i in range(1, 17):
-        fn = ("dial_%s.jpg" % i)
-        # fn = ("../../notebooks/%s.png" % i)
-        # fn = ("../../notebooks/%s.jpg" % i)
+        fn = ("img/dial_%s.jpg" % i)
         print("File name       = {", fn, "}")
         s_img = cv2.imread(fn)
         s_img = h.imgDimScale(s_img, w_img)
