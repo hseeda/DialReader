@@ -98,7 +98,6 @@ def getCirclesFromImage(grey_img, min_radius, max_radius, min_distance):
         return no_of_circles, circles
 
 
-# -------------------------------------------------------------------------
 # %% get one circle from color image
 @jit
 def getOneCircle(img, min_radius_ratio=0.25, max_radius_ratio=0.75, \
@@ -291,7 +290,7 @@ def angleToXY_North(x_center, y_center, radius, angle):
     angle = angle - 90
     x9 = int(x_center + (radius * np.cos(angle * np.pi / 180)))
     y9 = int(y_center + (radius * np.sin(angle * np.pi / 180)))
-    return (x9, y9)
+    return x9, y9
 
 
 class CropLayer(object):
@@ -315,24 +314,6 @@ class CropLayer(object):
         return [inputs[0][:, :, self.startY:self.endY, self.startX:self.endX]]
 
 
-def HED(image):
-    protoPath = r"C:\_Hassan\_Dev\_Projects_Commit\holistically-nested-edge-detection\hed_model\deploy.prototxt"
-    modelPath = r"C:\_Hassan\_Dev\_Projects_Commit\holistically-nested-edge-detection\hed_model\hed_pretrained_bsds.caffemodel"
-    net = cv2.dnn.readNetFromCaffe(protoPath, modelPath)
-    (H, W) = image.shape[:2]
-    print(("HED: Image size  = ( %s , %s )" % (W, H)))
-    blob = cv2.dnn.blobFromImage(image, scalefactor=1.0, size=(W, H),
-                                 # mean=(230, 120, 50),
-                                 mean=(104.00698793, 116.66876762, 122.67891434),
-                                 # mean=(100, 110, 120),
-                                 swapRB=True, crop=False)
-    net.setInput(blob)
-    hed = net.forward()
-    hed = cv2.resize(hed[0, 0], (W, H))
-    hed = (255 * hed).astype("uint8")
-    return hed
-
-
 @jit(fastmath=True)
 def drawDial(img, steps):
     w = img.shape[0] // 2
@@ -349,10 +330,6 @@ def drawDial(img, steps):
         cv2.line(img, (x, y), (x1, y1), (0, 0, 255), 2)
 
 
-# ----------------------------------------------------------------------------------------
-# ----------------------------------------------------------------------------------------
-# ----------------------------------------------------------------------------------------
-# ----------------------------------------------------------------------------------------
 @jit(fastmath=True)
 def getDialAngle1(img, steps):
     w = img.shape[0] // 2
@@ -362,7 +339,6 @@ def getDialAngle1(img, steps):
     r_count = 10
     r_start = w // 10
     r_step = 2
-    # --------------------------------------------------------------------------------
     p_old = 3 * 256 * 100
     ang_min = 0
     for angle in range(0, 360 * ang_res - 1):
