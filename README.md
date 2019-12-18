@@ -7,7 +7,7 @@ python library to read dial guage from images
 `numpy cv2 cython numba`
 
 ### example:
-![GitHub Logo](/img/example.jpg)
+![Example](/img/example.jpg)
 
 ### Website
 [Geotechnics](http:\\www.geotechegypt.com)
