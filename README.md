@@ -8,4 +8,4 @@ python library to read dial guage from images
 
 
 ![GitHub Logo](/img/dial_1.jpg)
-Format: ![Alt Text](www.geotechegypt.com)
+Format: ![Geotechnics](http:\\www.geotechegypt.com)
