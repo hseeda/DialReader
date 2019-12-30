@@ -12,4 +12,4 @@ python library to read dial guage from images
 ### Website:
 [Geotechnics](http:\\www.geotechegypt.com)
 
-![](/img/geosoft.png | width= 300)
+![](/img/geosoft.png){:height="50%" width="50%"}
